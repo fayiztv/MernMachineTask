@@ -10,6 +10,15 @@ export async function addStudent(req, res) {
   }
 }
 
+export async function getStudents(req, res) {
+  try {
+    const students = await studentModel.find({});
+    res.status(200).json(students);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 export async function updateStudent(req, res) {
   const { id } = req.params;
   const { name, email, age } = req.body;
