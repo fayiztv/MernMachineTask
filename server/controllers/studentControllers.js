@@ -28,3 +28,17 @@ export async function updateStudent(req, res) {
     res.status(500).json({ message: error.message });
   }
 }
+
+export async function deleteStudent(req, res) {
+  const { id } = req.params;
+
+  try {
+    const student = await studentModel.findByIdAndDelete(id);
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+    res.json({ message: "Student deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
