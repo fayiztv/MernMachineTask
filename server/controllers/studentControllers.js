@@ -51,3 +51,27 @@ export async function deleteStudent(req, res) {
     res.status(500).json({ message: error.message });
   }
 }
+
+export async function findStudents(req, res) {
+  const { searchTerm, sortParam, sortOrder } = req.query;
+
+  let searchQuery = searchTerm
+    ? {
+        $or: [
+          { name: { $regex: searchTerm, $options: "i" } },
+          { email: { $regex: searchTerm, $options: "i" } },
+        ],
+      }
+    : {};
+
+  let sortQuery = sortParam
+    ? { [sortParam]: sortOrder === "desc" ? -1 : 1 }
+    : {};
+
+  try {
+    const students = await studentModel.find(searchQuery).sort(sortQuery);
+    res.status(200).json(students);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
