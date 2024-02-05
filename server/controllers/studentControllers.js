@@ -10,4 +10,21 @@ export async function addStudent(req, res) {
   }
 }
 
+export async function updateStudent(req, res) {
+  const { id } = req.params;
+  const { name, email, age } = req.body;
 
+  try {
+    const student = await studentModel.findByIdAndUpdate(
+      id,
+      { name, email, age },
+      { new: true }
+    );
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+    res.json(student);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
