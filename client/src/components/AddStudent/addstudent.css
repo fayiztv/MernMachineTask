@@ -1,0 +1,111 @@
+.login-main {
+    width: 100%;
+    min-height: 90vh;
+}
+
+.login-nav {
+    padding: 20px 0px;
+}
+
+.login-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.login-sec {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-left:100px;
+}
+
+.login-sec img {
+    max-width: 85%;
+    max-height: 700px;
+    margin-right:200px;
+}
+
+.login-box {
+    width: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right:100px;
+}
+
+.login-row button {
+    width: 90%;
+    height: 45px;
+    border: none;
+    outline: none;
+    background-color:#1976D2;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top:20px;
+}
+.login-row button:disabled{
+    background-color: #1976d25c;
+}
+
+.login-row {
+    display: flex;
+    justify-content: center;
+}
+
+.login-row.head h3 {
+    color: var(--mainColor);
+}
+
+.login-box .input div {
+    border-radius: 10px;
+    background-color: var(--lightBg);
+    border-color: var(--lightGrey);
+}
+
+.login-box .input fieldset {
+    border-color: var(--lightGrey);
+}
+
+.login-nav h3 {
+    background: -webkit-linear-gradient(var(--secondColor), var(--mainColor));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 850;
+}
+
+@media(max-width:775px) {
+    .login-sec {
+        min-height: 30vh;
+    }
+    .login-sec.sec-2{
+        min-height: 50vh ;
+    }
+    .login-nav{
+        padding: 20px;
+        position: fixed;
+        top: 0px;
+    }
+    .login-container{
+        padding-top: 50px;
+    }
+    .login-box .input div {
+        height:50x;
+    }
+    .login-box{
+        margin-right:0;
+    }
+    .login-sec{
+        margin-left: 25px;
+    }
+    .login-sec img{
+        margin-right: 0;
+    } 
+}

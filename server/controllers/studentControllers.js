@@ -6,6 +6,7 @@ export async function addStudent(req, res) {
     await student.save();
     res.status(201).json(student);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 }
@@ -21,12 +22,12 @@ export async function getStudents(req, res) {
 
 export async function updateStudent(req, res) {
   const { id } = req.params;
-  const { name, email, age } = req.body;
+  const { name, email, place, age, phone } = req.body;
 
   try {
     const student = await studentModel.findByIdAndUpdate(
       id,
-      { name, email, age },
+      { name, email, place, age, phone },
       { new: true }
     );
     if (!student) {
@@ -53,23 +54,20 @@ export async function deleteStudent(req, res) {
 }
 
 export async function findStudents(req, res) {
-  const { searchTerm, sortParam, sortOrder } = req.query;
+  const { searchTerm } = req.query;
 
   let searchQuery = searchTerm
     ? {
         $or: [
           { name: { $regex: searchTerm, $options: "i" } },
           { email: { $regex: searchTerm, $options: "i" } },
+          { place: { $regex: searchTerm, $options: "i" } },
         ],
       }
     : {};
 
-  let sortQuery = sortParam
-    ? { [sortParam]: sortOrder === "desc" ? -1 : 1 }
-    : {};
-
   try {
-    const students = await studentModel.find(searchQuery).sort(sortQuery);
+    const students = await studentModel.find(searchQuery)
     res.status(200).json(students);
   } catch (error) {
     res.status(404).json({ message: error.message });
