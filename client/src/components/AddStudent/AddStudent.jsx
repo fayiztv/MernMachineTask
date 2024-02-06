@@ -146,7 +146,7 @@ function AddStudent() {
                     type="submit"
                     disabled={!validForm()}
                   >
-                    Sign In
+                    Add
                     <ClipLoader
                       size={20}
                       color="white"

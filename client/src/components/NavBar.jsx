@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import logo from "../assets/logo.png"
 import { Link } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
 
 
 function NavBar() {

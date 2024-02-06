@@ -1,3 +1,4 @@
+import StudentModel from "../models/studentModel.js";
 import studentModel from "../models/studentModel.js";
 
 export async function addStudent(req, res) {
@@ -20,8 +21,15 @@ export async function getStudents(req, res) {
   }
 }
 
+export async function getUpdateStudent(req, res) {
+  const id = req.params.id;
+
+  const student = await StudentModel.findById(id).lean();
+  res.status(200).json(student);
+}
+
 export async function updateStudent(req, res) {
-  const { id } = req.params;
+  const  id = req.body.id 
   const { name, email, place, age, phone } = req.body;
 
   try {
