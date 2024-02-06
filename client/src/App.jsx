@@ -7,7 +7,7 @@ import AddStudent from './components/AddStudent/AddStudent';
 import EditStudent from './components/EditStudent';
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3000";
+  axios.defaults.baseURL = "http://localhost:3001";
 
   return (
     <div className="app">
