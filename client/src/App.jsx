@@ -7,7 +7,8 @@ import AddStudent from './components/AddStudent/AddStudent';
 import EditStudent from './components/EditStudent';
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3001";
+  // axios.defaults.baseURL = "http://localhost:3001";
+  axios.defaults.baseURL = "https://mernmachinetask.onrender.com";
 
   return (
     <div className="app">
