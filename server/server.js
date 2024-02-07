@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
     cors({
-      origin: ["http://localhost:2000"],
+      origin: ["http://localhost:2000","https://studentaddition.netlify.app/"],
       credentials: true,
     })
   );
