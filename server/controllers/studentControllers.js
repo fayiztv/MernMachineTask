@@ -60,24 +60,3 @@ export async function deleteStudent(req, res) {
     res.status(500).json({ message: error.message });
   }
 }
-
-export async function findStudents(req, res) {
-  const { searchTerm } = req.query;
-
-  let searchQuery = searchTerm
-    ? {
-        $or: [
-          { name: { $regex: searchTerm, $options: "i" } },
-          { email: { $regex: searchTerm, $options: "i" } },
-          { place: { $regex: searchTerm, $options: "i" } },
-        ],
-      }
-    : {};
-
-  try {
-    const students = await studentModel.find(searchQuery)
-    res.status(200).json(students);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-}
